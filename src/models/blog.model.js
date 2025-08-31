@@ -58,6 +58,28 @@ module.exports = (sequelize, DataTypes) => {
             cover_image: {
                 type: DataTypes.TEXT,
             },
+            // GEO (Generative Engine Optimization) fields
+            ai_summary: {
+                type: DataTypes.TEXT,
+                allowNull: true,
+                comment: "Short factual answer, ~1-2 sentences for AI extraction",
+            },
+            faq_section: {
+                type: DataTypes.JSON,
+                allowNull: true,
+                comment: "Array of question + answer pairs for FAQ schema",
+            },
+            schema_type: {
+                type: DataTypes.ENUM('Article', 'FAQPage', 'Product', 'HowTo', 'BlogPosting', 'NewsArticle'),
+                allowNull: true,
+                defaultValue: 'Article',
+                comment: "Schema.org type for structured data",
+            },
+            entities_keywords: {
+                type: DataTypes.JSON,
+                allowNull: true,
+                comment: "List of key concepts for AI extraction",
+            },
         },
         {
             sequelize,

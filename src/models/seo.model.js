@@ -87,10 +87,35 @@
                 },
                 json_ld:{
                     type:DataTypes.TEXT
+                },
+                // GEO (Generative Engine Optimization) fields
+                ai_summary: {
+                    type: DataTypes.TEXT,
+                    allowNull: true,
+                    comment: "Short factual answer, ~1-2 sentences for AI extraction",
+                },
+                faq_section: {
+                    type: DataTypes.JSON,
+                    allowNull: true,
+                    comment: "Array of question + answer pairs for FAQ schema",
+                },
+                schema_type: {
+                    type: DataTypes.ENUM('Article', 'FAQPage', 'Product', 'HowTo', 'BlogPosting', 'NewsArticle', 'WebPage', 'Organization', 'LocalBusiness'),
+                    allowNull: true,
+                    defaultValue: 'WebPage',
+                    comment: "Schema.org type for structured data",
+                },
+                entities_keywords: {
+                    type: DataTypes.JSON,
+                    allowNull: true,
+                    comment: "List of key concepts for AI extraction",
+                },
+                page_type: {
+                    type: DataTypes.ENUM('home', 'about', 'contact', 'services', 'products', 'blog', 'category', 'custom'),
+                    allowNull: true,
+                    defaultValue: 'custom',
+                    comment: "Type of page for better categorization",
                 }
-
-              
-              
             },
             {
                 sequelize,
